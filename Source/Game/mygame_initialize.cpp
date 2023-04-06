@@ -34,9 +34,9 @@ void CGameStateInit::OnInit()
 	//Load background image
 	//background.LoadBitmapByString({"C:/OOP2023_flappybird/OOP2023_Flappybird/Bitmaps/InitBackground.bmp"});
 	//background.SetTopLeft(0, 0);
-	background.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/background.bmp" });
-	title.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/Title.bmp" }, RGB(255, 255, 255));
-	clickedPlayButton.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/PlayButton.bmp" }, RGB(255, 255, 255));
+	background.LoadBitmapByString({ "Resources/background.bmp" });
+	title.LoadBitmapByString({ "Resources/Title.bmp" }, RGB(255, 255, 255));
+	clickedPlayButton.LoadBitmapByString({ "Resources/PlayButton.bmp" }, RGB(255, 255, 255));
 
 }
 
@@ -93,6 +93,6 @@ void CGameStateInit::OnShow()
 
 void CGameStateInit::load_background()
 {
-	background.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/background.bmp" });
+	background.LoadBitmapByString({ "Resources/background.bmp" });
 	background.SetTopLeft(0, 0);
 }
