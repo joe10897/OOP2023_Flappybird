@@ -35,32 +35,42 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
-	//鍵盤觸法
-	
-	if (cnt >= 5)  //Pipe 自動移動
+	//PIPE **
+	if (SpaceKey == true)
 	{
-		cnt = 0;
-		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() - 5, pipe_down[shot].GetTop());
-		pipe_down[shot].ShowBitmap();
-
-		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() - 5, pipe_top[shot].GetTop());
-		pipe_top[shot].ShowBitmap();
-		shot++;
-
-		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() - 10, pipe_down[shot].GetTop());
-		pipe_down[shot].ShowBitmap();
-
-		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() - 10, pipe_top[shot].GetTop());
-		pipe_top[shot].ShowBitmap();
-		shot++;
-
-		if (shot > 1000)
+		if (cnt_time >= 5)
 		{
-			shot = 0;
+			cnt_time = 0;
+			pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 200, pipe_down[shot].GetTop());
+			pipe_down[shot].ShowBitmap();
+			pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 200, pipe_top[shot].GetTop());
+			pipe_top[shot].ShowBitmap();
+			shot++;
+
+			pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 400, pipe_down[shot].GetTop());
+			pipe_down[shot].ShowBitmap();
+			pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 400, pipe_top[shot].GetTop());
+			pipe_top[shot].ShowBitmap();
+			shot++;
+
+			pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 800, pipe_down[shot].GetTop());
+			pipe_down[shot].ShowBitmap();
+			pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 800, pipe_top[shot].GetTop());
+			pipe_top[shot].ShowBitmap();
+			shot++;
+
+			pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 1200, pipe_down[shot].GetTop());
+			pipe_down[shot].ShowBitmap();
+			pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 1200, pipe_top[shot].GetTop());
+			pipe_top[shot].ShowBitmap();
+			shot++;
+			if (shot > max)
+			{
+				shot = 0;
+			}
 		}
+		cnt_time++;
 	}
-	cnt++;
-	
 
 	//for (int i = 10; i == 300; i += 10)
 	//{
@@ -107,22 +117,18 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	bird.SetTopLeft(500, 300);
 
 	//loading pipe_down
-	cnt = 5;
+	//int Random_Down[5] = { 300, 350, 400, 450, 500 };
+	//int number_Down = rand() % (500-300+1)+300;
+
 	shot = 0;
-
-
-	int Random_Down[5] = { 300, 350, 400, 450, 500 };
-	int number_Down = rand() % (500-300+1)+300;
-	for (int i = 0; i < 1000; i++)
-	{
-		pipe_down[i].LoadBitmapByString({ "Resources/pipe_down.bmp" }, RGB(255, 255, 255));
-		pipe_down[i].SetTopLeft(1000, 400);
-
+	max = 1000;
+	cnt_time = 5;
+	for (int i = 0; i < max; i++) { //Y軸平移
 		pipe_top[i].LoadBitmapByString({ "Resources/pipe_top.bmp" }, RGB(255, 255, 255));
-		pipe_top[i].SetTopLeft(1000, -200);
-		//pipe_down.SetAnimation(1000, true);
+		pipe_down[i].LoadBitmapByString({ "Resources/pipe_down.bmp" }, RGB(255, 255, 255));
+		pipe_top[i].SetTopLeft(800, -200);
+		pipe_down[i].SetTopLeft(800, 400);
 	}
-	
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -208,19 +214,27 @@ void CGameStateRun::OnShow()
 	bird.ShowBitmap();
 
 	//show pipe_down
-	for (int i = 0; i < 1000; i++)
-	{
-		if (pipe_down[i].IsBitmapLoaded() == true)
-		{
-			pipe_down[i].SetTopLeft(pipe_down[i].GetLeft() -5, pipe_down[i].GetTop());
-			pipe_down[i].ShowBitmap();
-
-			pipe_top[i].SetTopLeft(pipe_top[i].GetLeft() - 5, pipe_top[i].GetTop());
-			pipe_top[i].ShowBitmap();
-			//character.ShowBitmap();
-			//pipe_down.ShowBitmap();
-		}
+	for (int i = 0; i < max; i++) { //Y軸平移
+		pipe_down[i].ShowBitmap();
+		pipe_top[i].ShowBitmap();
+		pipe_down[i].SetTopLeft(pipe_down[i].GetLeft() - 5, pipe_down[i].GetTop());
+		pipe_top[i].SetTopLeft(pipe_top[i].GetLeft() - 5, pipe_top[i].GetTop());
+		
 	}
+	
+	//for (int i = 0; i < max; i++)
+	//{
+	//	if (pipe_down[i].IsBitmapLoaded() == true)
+	//	{
+	//		pipe_down[i].SetTopLeft(pipe_down[i].GetLeft() -5, pipe_down[i].GetTop());
+	//		pipe_top[i].SetTopLeft(pipe_top[i].GetLeft() - 5, pipe_top[i].GetTop());
+
+	//		pipe_down[i].ShowBitmap();
+	//		pipe_top[i].ShowBitmap();
+	//		//character.ShowBitmap();
+	//		//pipe_down.ShowBitmap();
+	//	}
+	//}
 }
 
 void CGameStateRun::show_text(){

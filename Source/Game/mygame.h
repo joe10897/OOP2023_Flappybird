@@ -100,7 +100,7 @@ namespace game_framework {
 		bool playBtnClicked, finishLoaded, helpBtnClicked, onHelp, onAbout, onHowToPlay, onCheatPage; //按鍵
 		//keyboard
 		bool LeftKey, RightKey, UpKey, DownKey, SpaceKey;
-		int cnt, shot;
+		int cnt_time, shot, max;
 		CMovingBitmap background, clickedPlayButton, title, bird, pipe_down[1000], pipe_top[1000]; // 背景
 	};
 
