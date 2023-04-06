@@ -32,7 +32,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
-	background.LoadBitmapByString({"C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/InitBackground.bmp"});
+	background.LoadBitmapByString({"C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/background.bmp"});
 	background.SetTopLeft(10, 10);
 }
 
