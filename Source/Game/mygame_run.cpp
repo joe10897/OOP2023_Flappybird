@@ -31,27 +31,47 @@ void CGameStateRun::OnBeginState()
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	//鍵盤觸法
-	//if (SpaceKey == true)  //TEST
+	
+	if (cnt >= 5)  //Pipe 自動移動
+	{
+		cnt = 0;
+		pipe[shot].SetTopLeft(pipe[shot].GetLeft() - 5, pipe[shot].GetTop());
+		pipe[shot].ShowBitmap();
+		shot++;
+		pipe[shot].SetTopLeft(pipe[shot].GetLeft() - 10, pipe[shot].GetTop());
+		pipe[shot].ShowBitmap();
+		shot++;
+		if (shot > 1000)
+		{
+			shot = 0;
+		}
+	}
+	
+
+	//for (int i = 10; i == 300; i += 10)
 	//{
-	//	if (bird.GetLeft() < 1000)
-	//	{
-	//		bird.SetTopLeft(bird.GetLeft() + 10, bird.GetTop());
+	//	if (10 < pipe.GetTop()) {
+	//		pipe.SetTopLeft(pipe.GetLeft(), pipe.GetTop() + 10);
 	//	}
 	//}
+
 	if (DownKey == true)  //向上
 	{
 		if (bird.GetTop() < 400)
 		{
-			bird.SetTopLeft(bird.GetLeft(),bird.GetTop()+10);
+			bird.SetTopLeft(bird.GetLeft(),bird.GetTop() +4);
 		}
 	}
 	if (UpKey == true)  //向下
 	{
 		if (10 < bird.GetTop())
 		{
-			bird.SetTopLeft(bird.GetLeft(), bird.GetTop() - 10);
+			bird.SetTopLeft(bird.GetLeft(), bird.GetTop() -4);
 		}
 	}
+
+	//loading pipe
+	//pipe.ToggleAnimation();
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -71,6 +91,17 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//loading bird
 	bird.LoadBitmapByString({ "Resources/bird.bmp" }, RGB(255, 255, 255));
 	bird.SetTopLeft(500, 300);
+
+	//loading pipe
+	cnt = 5;
+	shot = 0;
+	for (int i = 0; i < 1000; i++)
+	{
+		pipe[i].LoadBitmapByString({ "Resources/pipe.bmp" }, RGB(255, 255, 255));
+		pipe[i].SetTopLeft(900, 300);
+		//pipe.SetAnimation(1000, true);
+	}
+	
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -149,13 +180,24 @@ void CGameStateRun::OnShow()
 	//show background
 	background.ShowBitmap();
 	title.ShowBitmap();
+
 	//clickedPlayButton.ShowBitmap();
 	bird.ShowBitmap();
+
+	//show pipe
+	for (int i = 0; i < 1000; i++)
+	{
+		if (pipe[i].IsBitmapLoaded() == true)
+		{
+			pipe[i].SetTopLeft(pipe[i].GetLeft() -5, pipe[i].GetTop());
+			pipe[i].ShowBitmap();
+			//character.ShowBitmap();
+			//pipe.ShowBitmap();
+		}
+	}
 }
 
 void CGameStateRun::show_text(){
 	CDC *pDC = CDDraw::GetBackCDC();
-	//CFont* fp;
-	//CTextDraw::ChangeFontLog(pDC, fp, 21, "�L�n������", RGB(0, 0, 0), 800);
-	CTextDraw::Print(pDC, 237, 128, "HIIIIIIIIIIIII");
+	CTextDraw::Print(pDC, 300, 600, "Some text here.");
 }
