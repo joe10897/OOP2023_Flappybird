@@ -93,7 +93,6 @@ namespace game_framework {
 		void OnMouseMove(UINT nFlags, CPoint point);	// 處理滑鼠的動作 
 		void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
-		int myRandom(int min, int max);
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
@@ -102,7 +101,7 @@ namespace game_framework {
 		//keyboard
 		bool LeftKey, RightKey, UpKey, DownKey, SpaceKey;
 		int cnt, shot;
-		CMovingBitmap background, clickedPlayButton, title, bird, pipe[1000]; // 背景
+		CMovingBitmap background, clickedPlayButton, title, bird, pipe_down[1000], pipe_top[1000]; // 背景
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

@@ -8,6 +8,11 @@
 #include "mygame.h"
 #include "config.h"
 
+#include <time.h>
+#include <stdlib.h>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace game_framework;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -35,23 +40,32 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	if (cnt >= 5)  //Pipe 自動移動
 	{
 		cnt = 0;
-		pipe[shot].SetTopLeft(pipe[shot].GetLeft() - 5, pipe[shot].GetTop());
-		pipe[shot].ShowBitmap();
+		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() - 5, pipe_down[shot].GetTop());
+		pipe_down[shot].ShowBitmap();
+
+		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() - 5, pipe_top[shot].GetTop());
+		pipe_top[shot].ShowBitmap();
 		shot++;
-		pipe[shot].SetTopLeft(pipe[shot].GetLeft() - 10, pipe[shot].GetTop());
-		pipe[shot].ShowBitmap();
+
+		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() - 10, pipe_down[shot].GetTop());
+		pipe_down[shot].ShowBitmap();
+
+		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() - 10, pipe_top[shot].GetTop());
+		pipe_top[shot].ShowBitmap();
 		shot++;
+
 		if (shot > 1000)
 		{
 			shot = 0;
 		}
 	}
+	cnt++;
 	
 
 	//for (int i = 10; i == 300; i += 10)
 	//{
-	//	if (10 < pipe.GetTop()) {
-	//		pipe.SetTopLeft(pipe.GetLeft(), pipe.GetTop() + 10);
+	//	if (10 < pipe_down.GetTop()) {
+	//		pipe_down.SetTopLeft(pipe_down.GetLeft(), pipe_down.GetTop() + 10);
 	//	}
 	//}
 
@@ -70,8 +84,8 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		}
 	}
 
-	//loading pipe
-	//pipe.ToggleAnimation();
+	//loading pipe_down
+	//pipe_down.ToggleAnimation();
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -92,14 +106,21 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	bird.LoadBitmapByString({ "Resources/bird.bmp" }, RGB(255, 255, 255));
 	bird.SetTopLeft(500, 300);
 
-	//loading pipe
+	//loading pipe_down
 	cnt = 5;
 	shot = 0;
+
+
+	int Random_Down[5] = { 300, 350, 400, 450, 500 };
+	int number_Down = rand() % (500-300+1)+300;
 	for (int i = 0; i < 1000; i++)
 	{
-		pipe[i].LoadBitmapByString({ "Resources/pipe.bmp" }, RGB(255, 255, 255));
-		pipe[i].SetTopLeft(900, 300);
-		//pipe.SetAnimation(1000, true);
+		pipe_down[i].LoadBitmapByString({ "Resources/pipe_down.bmp" }, RGB(255, 255, 255));
+		pipe_down[i].SetTopLeft(1000, 400);
+
+		pipe_top[i].LoadBitmapByString({ "Resources/pipe_top.bmp" }, RGB(255, 255, 255));
+		pipe_top[i].SetTopLeft(1000, -200);
+		//pipe_down.SetAnimation(1000, true);
 	}
 	
 }
@@ -179,20 +200,25 @@ void CGameStateRun::OnShow()
 {
 	//show background
 	background.ShowBitmap();
-	title.ShowBitmap();
+
+	//show title
+	//title.ShowBitmap();
 
 	//clickedPlayButton.ShowBitmap();
 	bird.ShowBitmap();
 
-	//show pipe
+	//show pipe_down
 	for (int i = 0; i < 1000; i++)
 	{
-		if (pipe[i].IsBitmapLoaded() == true)
+		if (pipe_down[i].IsBitmapLoaded() == true)
 		{
-			pipe[i].SetTopLeft(pipe[i].GetLeft() -5, pipe[i].GetTop());
-			pipe[i].ShowBitmap();
+			pipe_down[i].SetTopLeft(pipe_down[i].GetLeft() -5, pipe_down[i].GetTop());
+			pipe_down[i].ShowBitmap();
+
+			pipe_top[i].SetTopLeft(pipe_top[i].GetLeft() - 5, pipe_top[i].GetTop());
+			pipe_top[i].ShowBitmap();
 			//character.ShowBitmap();
-			//pipe.ShowBitmap();
+			//pipe_down.ShowBitmap();
 		}
 	}
 }
