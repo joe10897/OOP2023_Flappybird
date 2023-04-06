@@ -31,13 +31,13 @@ void CGameStateRun::OnBeginState()
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	//鍵盤觸法
-	//if (SpaceKey == true)
-	//{
-	//	if (clickedPlayButton.GetLeft() < 1000)
-	//	{
-	//		clickedPlayButton.SetTopLeft(clickedPlayButton.GetLeft() + 10, clickedPlayButton.GetTop());
-	//	}
-	//}
+	if (SpaceKey == true)
+	{
+		if (clickedPlayButton.GetLeft() < 1000)
+		{
+			clickedPlayButton.SetTopLeft(clickedPlayButton.GetLeft() + 10, clickedPlayButton.GetTop());
+		}
+	}
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -130,13 +130,13 @@ void CGameStateRun::OnShow()
 {
 	//show background
 	background.ShowBitmap();
-	title.ShowBitmap();
-	clickedPlayButton.ShowBitmap();
+	//title.ShowBitmap();
+	//clickedPlayButton.ShowBitmap();
 }
 
 void CGameStateRun::show_text(){
-	//CDC *pDC = CDDraw::GetBackCDC();
+	CDC *pDC = CDDraw::GetBackCDC();
 	//CFont* fp;
 	//CTextDraw::ChangeFontLog(pDC, fp, 21, "�L�n������", RGB(0, 0, 0), 800);
-	//CTextDraw::Print(pDC, 237, 128, "HIIIIIIIIIIIII");
+	CTextDraw::Print(pDC, 237, 128, "HIIIIIIIIIIIII");
 }

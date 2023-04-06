@@ -6,6 +6,7 @@
 #include "../Library/gameutil.h"
 #include "../Library/gamecore.h"
 #include "mygame.h"
+#include "config.h"
 
 using namespace game_framework;
 /////////////////////////////////////////////////////////////////////////////
@@ -33,27 +34,61 @@ void CGameStateInit::OnInit()
 	//Load background image
 	//background.LoadBitmapByString({"C:/OOP2023_flappybird/OOP2023_Flappybird/Bitmaps/InitBackground.bmp"});
 	//background.SetTopLeft(0, 0);
-		
+	background.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/background.bmp" });
+	title.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/Title.bmp" }, RGB(255, 255, 255));
+	clickedPlayButton.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/PlayButton.bmp" }, RGB(255, 255, 255));
+
 }
 
 void CGameStateInit::OnBeginState()
 {
 }
 
+void CGameStateInit::OnMove()							// 移動遊戲元素
+{
+	//鍵盤觸法
+	if (SpaceKey == true)
+	{
+		GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
+	}
+}
+
+void CGameStateInit::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+
+	if (nChar == 0x20)
+	{
+		SpaceKey = true;
+	}
+
+}
+
 void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
+
+	if (nChar == 0x20)
+	{
+		SpaceKey = false;
+	}
 
 }
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
+	//GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
 }
 
 void CGameStateInit::OnShow()
 {
-	// 貼上背景
-	//background.ShowBitmap();
+	//show background
+	background.ShowBitmap();
+	background.SetTopLeft(0, 0);
+
+	title.ShowBitmap();
+	title.SetTopLeft(50, 50);
+
+	clickedPlayButton.ShowBitmap();
+	clickedPlayButton.SetTopLeft(420, 280);
 }
 
 void CGameStateInit::load_background()
