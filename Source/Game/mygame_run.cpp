@@ -43,16 +43,10 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
 	//loading background
-	background.LoadBitmapByString({"C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/background.bmp"});
-	background.SetTopLeft(0, 0);
-
-	//loading game title
-	title.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/Title.bmp"}, RGB(255, 255, 255));
-	title.SetTopLeft(50, 50);
-
-	//loading play button
-	clickedPlayButton.LoadBitmapByString({"C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/PlayButton.bmp"}, RGB(255, 255, 255));
-	clickedPlayButton.SetTopLeft(420, 280);
+	background.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/background.bmp" });
+	title.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/Title.bmp" }, RGB(255, 255, 255));
+	clickedPlayButton.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/PlayButton.bmp" }, RGB(255, 255, 255));
+	bird.LoadBitmapByString({ "C:/OOP2023_flappybird/OOP2023_Flappybird/Resources/bird.bmp" }, RGB(255, 255, 255));
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -130,8 +124,15 @@ void CGameStateRun::OnShow()
 {
 	//show background
 	background.ShowBitmap();
+	background.SetTopLeft(0, 0);
+
+	bird.ShowBitmap();
+	bird.SetTopLeft(420, 280);
 	//title.ShowBitmap();
+	//title.SetTopLeft(50, 50);
+
 	//clickedPlayButton.ShowBitmap();
+	//clickedPlayButton.SetTopLeft(420, 280);
 }
 
 void CGameStateRun::show_text(){

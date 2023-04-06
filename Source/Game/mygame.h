@@ -97,7 +97,7 @@ namespace game_framework {
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 		void show_text();
-		CMovingBitmap background, clickedPlayButton, title; // 背景
+		CMovingBitmap background, clickedPlayButton, title, bird; // 背景
 		bool playBtnClicked, finishLoaded, helpBtnClicked, onHelp, onAbout, onHowToPlay, onCheatPage; //按鍵
 
 		//keyboard
