@@ -30,6 +30,10 @@ void CGameStateInit::OnInit()
 	//
 	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
 	//
+	//Load background image
+	//background.LoadBitmapByString({"C:/OOP2023_flappybird/OOP2023_Flappybird/Bitmaps/InitBackground.bmp"});
+	//background.SetTopLeft(0, 0);
+		
 }
 
 void CGameStateInit::OnBeginState()
@@ -48,4 +52,6 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CGameStateInit::OnShow()
 {
+	// 貼上背景
+	//background.ShowBitmap();
 }
