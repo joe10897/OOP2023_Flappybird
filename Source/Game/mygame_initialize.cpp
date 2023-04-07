@@ -38,6 +38,12 @@ void CGameStateInit::OnInit()
 	title.LoadBitmapByString({ "Resources/Title.bmp" }, RGB(255, 255, 255));
 	clickedPlayButton.LoadBitmapByString({ "Resources/PlayButton.bmp" }, RGB(255, 255, 255));
 	settingButton.LoadBitmapByString({ "Resources/setting.bmp" }, RGB(255, 255, 255));
+	ground.LoadBitmapByString({ "Resources/ground.bmp" }, RGB(255, 255, 255));
+	ground1.LoadBitmapByString({ "Resources/ground1.bmp" }, RGB(255, 255, 255));
+	ground2.LoadBitmapByString({ "Resources/ground2.bmp" }, RGB(255, 255, 255));
+	ground3.LoadBitmapByString({ "Resources/ground3.bmp" }, RGB(255, 255, 255));
+	ground4.LoadBitmapByString({ "Resources/ground4.bmp" }, RGB(255, 255, 255));
+
 
 }
 
@@ -95,6 +101,21 @@ void CGameStateInit::OnShow()
 
 	settingButton.ShowBitmap();
 	settingButton.SetTopLeft(850, 10);
+
+	ground.ShowBitmap();
+	ground.SetTopLeft(480, 500);
+
+	ground1.ShowBitmap();
+	ground1.SetTopLeft(0, 500);
+
+	ground2.ShowBitmap();
+	ground2.SetTopLeft(240, 500);
+
+	ground3.ShowBitmap();
+	ground3.SetTopLeft(720, 500);
+
+	ground4.ShowBitmap();
+	ground4.SetTopLeft(960, 500);
 }
 
 void CGameStateInit::load_background()

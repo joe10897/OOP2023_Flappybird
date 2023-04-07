@@ -136,7 +136,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	clickedPlayButton.SetTopLeft(420, 280);
 
 	//loading bird
-	bird.LoadBitmapByString({ "Resources/bird.bmp" }, RGB(255, 255, 255));
+	bird.LoadBitmapByString({ "Resources/balloon.bmp" }, RGB(0, 0, 0));
 	bird.SetTopLeft(500, 300);
 
 	//loading pipe_down
@@ -151,8 +151,13 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 		pipe_down[i].LoadBitmapByString({ "Resources/pipe_down.bmp" }, RGB(255, 255, 255));
 		pipe_top[i].SetTopLeft(900, -150);
 		pipe_down[i].SetTopLeft(1000, 300);
-
 	}
+
+	ground.LoadBitmapByString({ "Resources/ground.bmp" }, RGB(255, 255, 255));
+	ground1.LoadBitmapByString({ "Resources/ground1.bmp" }, RGB(255, 255, 255));
+	ground2.LoadBitmapByString({ "Resources/ground2.bmp" }, RGB(255, 255, 255));
+	ground3.LoadBitmapByString({ "Resources/ground3.bmp" }, RGB(255, 255, 255));
+	ground4.LoadBitmapByString({ "Resources/ground4.bmp" }, RGB(255, 255, 255));
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -245,6 +250,21 @@ void CGameStateRun::OnShow()
 		pipe_top[i].SetTopLeft(pipe_top[i].GetLeft() - 6, pipe_top[i].GetTop());
 		
 	}
+
+	ground.ShowBitmap();
+	ground.SetTopLeft(480, 500);
+
+	ground1.ShowBitmap();
+	ground1.SetTopLeft(0, 500);
+
+	ground2.ShowBitmap();
+	ground2.SetTopLeft(240, 500);
+
+	ground3.ShowBitmap();
+	ground3.SetTopLeft(720, 500);
+
+	ground4.ShowBitmap();
+	ground4.SetTopLeft(960, 500);
 	
 	//for (int i = 0; i < max; i++)
 	//{
