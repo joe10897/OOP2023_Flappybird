@@ -65,11 +65,11 @@ namespace game_framework {
 		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 	protected:
 		void OnShow();									// 顯示這個狀態的遊戲畫面
-		void show_text();
+		//void show_text();
 		void load_background();
 		void OnMove();
 	private:
-		CMovingBitmap logo, background, clickedPlayButton, title;								// csie的logo, 背景
+		CMovingBitmap logo, background, clickedPlayButton, title, settingButton;								// csie的logo, 背景
 		
 		//keyboard
 		bool SpaceKey;
