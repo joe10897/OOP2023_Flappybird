@@ -36,41 +36,64 @@ void CGameStateRun::OnBeginState()
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	//PIPE **
-	if (SpaceKey == true)
+
+	if (cnt_time >= 5)
 	{
-		if (cnt_time >= 5)
+		cnt_time = 0;
+		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 200, pipe_down[shot].GetTop());
+		pipe_down[shot].ShowBitmap();
+		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 200, pipe_top[shot].GetTop());
+		pipe_top[shot].ShowBitmap();
+		shot++;
+
+		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 400, pipe_down[shot].GetTop());
+		pipe_down[shot].ShowBitmap();
+		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 400, pipe_top[shot].GetTop());
+		pipe_top[shot].ShowBitmap();
+		shot++;
+
+		//pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 600, pipe_down[shot].GetTop());
+		//pipe_down[shot].ShowBitmap();
+		//pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 600, pipe_top[shot].GetTop());
+		//pipe_top[shot].ShowBitmap();
+		//shot++;
+
+		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 800, pipe_down[shot].GetTop());
+		pipe_down[shot].ShowBitmap();
+		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 800, pipe_top[shot].GetTop());
+		pipe_top[shot].ShowBitmap();
+		shot++;
+
+		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 1200, pipe_down[shot].GetTop());
+		pipe_down[shot].ShowBitmap();
+		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 1200, pipe_top[shot].GetTop());
+		pipe_top[shot].ShowBitmap();
+		shot++;
+
+		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 1400, pipe_down[shot].GetTop());
+		pipe_down[shot].ShowBitmap();
+		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 1400, pipe_top[shot].GetTop());
+		pipe_top[shot].ShowBitmap();
+		shot++;
+
+		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 1600, pipe_down[shot].GetTop());
+		pipe_down[shot].ShowBitmap();
+		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 1600, pipe_top[shot].GetTop());
+		pipe_top[shot].ShowBitmap();
+		shot++;
+
+		pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 2000, pipe_down[shot].GetTop());
+		pipe_down[shot].ShowBitmap();
+		pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 2000, pipe_top[shot].GetTop());
+		pipe_top[shot].ShowBitmap();
+		shot++;
+		if (shot > max)
 		{
-			cnt_time = 0;
-			pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 200, pipe_down[shot].GetTop());
-			pipe_down[shot].ShowBitmap();
-			pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 200, pipe_top[shot].GetTop());
-			pipe_top[shot].ShowBitmap();
-			shot++;
-
-			pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 400, pipe_down[shot].GetTop());
-			pipe_down[shot].ShowBitmap();
-			pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 400, pipe_top[shot].GetTop());
-			pipe_top[shot].ShowBitmap();
-			shot++;
-
-			pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 800, pipe_down[shot].GetTop());
-			pipe_down[shot].ShowBitmap();
-			pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 800, pipe_top[shot].GetTop());
-			pipe_top[shot].ShowBitmap();
-			shot++;
-
-			pipe_down[shot].SetTopLeft(pipe_down[shot].GetLeft() + 1200, pipe_down[shot].GetTop());
-			pipe_down[shot].ShowBitmap();
-			pipe_top[shot].SetTopLeft(pipe_top[shot].GetLeft() + 1200, pipe_top[shot].GetTop());
-			pipe_top[shot].ShowBitmap();
-			shot++;
-			if (shot > max)
-			{
-				shot = 0;
-			}
+			shot = 0;
 		}
-		cnt_time++;
 	}
+	cnt_time++;
+
 
 	//for (int i = 10; i == 300; i += 10)
 	//{
@@ -121,13 +144,14 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//int number_Down = rand() % (500-300+1)+300;
 
 	shot = 0;
-	max = 1000;
+	max = 2000;
 	cnt_time = 5;
 	for (int i = 0; i < max; i++) { //Y軸平移
 		pipe_top[i].LoadBitmapByString({ "Resources/pipe_top.bmp" }, RGB(255, 255, 255));
 		pipe_down[i].LoadBitmapByString({ "Resources/pipe_down.bmp" }, RGB(255, 255, 255));
-		pipe_top[i].SetTopLeft(800, -200);
-		pipe_down[i].SetTopLeft(800, 400);
+		pipe_top[i].SetTopLeft(900, -150);
+		pipe_down[i].SetTopLeft(1000, 300);
+
 	}
 }
 
@@ -217,8 +241,8 @@ void CGameStateRun::OnShow()
 	for (int i = 0; i < max; i++) { //Y軸平移
 		pipe_down[i].ShowBitmap();
 		pipe_top[i].ShowBitmap();
-		pipe_down[i].SetTopLeft(pipe_down[i].GetLeft() - 5, pipe_down[i].GetTop());
-		pipe_top[i].SetTopLeft(pipe_top[i].GetLeft() - 5, pipe_top[i].GetTop());
+		pipe_down[i].SetTopLeft(pipe_down[i].GetLeft() - 6, pipe_down[i].GetTop());
+		pipe_top[i].SetTopLeft(pipe_top[i].GetLeft() - 6, pipe_top[i].GetTop());
 		
 	}
 	

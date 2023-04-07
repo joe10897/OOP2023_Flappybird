@@ -101,7 +101,7 @@ namespace game_framework {
 		//keyboard
 		bool LeftKey, RightKey, UpKey, DownKey, SpaceKey;
 		int cnt_time, shot, max;
-		CMovingBitmap background, clickedPlayButton, title, bird, pipe_down[1000], pipe_top[1000]; // 背景
+		CMovingBitmap background, clickedPlayButton, title, bird, pipe_down[2000], pipe_top[2000]; // 背景
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

@@ -87,10 +87,10 @@ void CGameStateInit::OnShow()
 	background.SetTopLeft(0, 0);
 
 	title.ShowBitmap();
-	title.SetTopLeft(50, 50);
+	title.SetTopLeft(370, 70);
 
 	clickedPlayButton.ShowBitmap();
-	clickedPlayButton.SetTopLeft(420, 280);
+	clickedPlayButton.SetTopLeft(400, 240);
 }
 
 void CGameStateInit::load_background()
