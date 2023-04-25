@@ -69,7 +69,7 @@ namespace game_framework {
 		void load_background();
 		void OnMove();
 	private:
-		CMovingBitmap logo, background, clickedPlayButton, title, settingButton, ground, ground1, ground2, ground3, ground4; ;								// csie的logo, 背景
+		CMovingBitmap logo, background, clickedPlayButton, title, settingButton, ground;								// csie的logo, 背景
 		
 		//keyboard
 		bool SpaceKey;
@@ -101,7 +101,7 @@ namespace game_framework {
 		//keyboard
 		bool LeftKey, RightKey, UpKey, DownKey, SpaceKey;
 		int cnt_time, shot, max;
-		CMovingBitmap background, clickedPlayButton, title, bird, pipe_down[1000], pipe_top[1000], ground, ground1, ground2, ground3, ground4; // 背景
+		CMovingBitmap background, clickedPlayButton, title, bird, pipe_down[1000], pipe_top[1000], ground; // 背景
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

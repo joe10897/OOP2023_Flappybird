@@ -31,6 +31,7 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
+
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
@@ -41,14 +42,14 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	{
 		if (bird.GetTop() < 400)
 		{
-			bird.SetTopLeft(bird.GetLeft(),bird.GetTop() +4);
+			bird.SetTopLeft(bird.GetLeft(),bird.GetTop() + 4);
 		}
 	}
 	if (UpKey == true)  //向下
 	{
 		if (10 < bird.GetTop())
 		{
-			bird.SetTopLeft(bird.GetLeft(), bird.GetTop() -4);
+			bird.SetTopLeft(bird.GetLeft(), bird.GetTop() - 4);
 		}
 	}
 
@@ -83,10 +84,6 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	}
 	 //loding ground
 	ground.LoadBitmapByString({ "Resources/ground.bmp" }, RGB(255, 255, 255));
-	ground1.LoadBitmapByString({ "Resources/ground1.bmp" }, RGB(255, 255, 255));
-	ground2.LoadBitmapByString({ "Resources/ground2.bmp" }, RGB(255, 255, 255));
-	ground3.LoadBitmapByString({ "Resources/ground3.bmp" }, RGB(255, 255, 255));
-	ground4.LoadBitmapByString({ "Resources/ground4.bmp" }, RGB(255, 255, 255));
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -146,6 +143,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
+
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -181,19 +179,8 @@ void CGameStateRun::OnShow()
 	}
 
 	ground.ShowBitmap();
-	ground.SetTopLeft(480, 500);
+	ground.SetTopLeft(0, 500);
 
-	ground1.ShowBitmap();
-	ground1.SetTopLeft(0, 500);
-
-	ground2.ShowBitmap();
-	ground2.SetTopLeft(240, 500);
-
-	ground3.ShowBitmap();
-	ground3.SetTopLeft(720, 500);
-
-	ground4.ShowBitmap();
-	ground4.SetTopLeft(960, 500);
 }
 
 void CGameStateRun::show_text(){
