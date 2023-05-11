@@ -78,7 +78,7 @@ CAudio::CAudio()
 {
 	const int PIPE_SIZE = 400;
 	isOpened = false;
-	// Create a pipe and a thread for MCI commands
+	// Create a pipe_down and a thread for MCI commands
 	DWORD dwThreadID;
 	HANDLE hReadEnd; 
     BOOL bRet = CreatePipe(&hReadEnd, &hWriteEnd, NULL, PIPE_SIZE); 
@@ -139,7 +139,7 @@ void CAudio::MCIThread(HANDLE hRead)
 	DWORD dwRead;
 	char *ptr = buf;
 	//
-	// ReadFile returns false when the pipe is closed
+	// ReadFile returns false when the pipe_down is closed
 	//
     while(ReadFile(hRead, ptr, buf + MAX_BUFFER_SIZE - ptr - 1, &dwRead, NULL))
     {    
@@ -180,7 +180,7 @@ void CAudio::MCIThread(HANDLE hRead)
 		if (ptr == ptr_end)
 			ptr = buf;
     }
-	// pipe closed
+	// pipe_down closed
     CloseHandle(hRead);
 	TRACE("Exit MCI command thread\n");
 }
@@ -191,7 +191,7 @@ void CAudio::SendMciCommand(char *command)
 	DWORD dwWrite;
 	sprintf(buf, "[%s]", command);
 	BOOL bRet=WriteFile(hWriteEnd, buf, strlen(buf), &dwWrite, NULL); 
-	GAME_ASSERT(bRet != NULL, "CAudio Error: cannot write to command pipe!");
+	GAME_ASSERT(bRet != NULL, "CAudio Error: cannot write to command pipe_down!");
 }
 
 void CAudio::Close()

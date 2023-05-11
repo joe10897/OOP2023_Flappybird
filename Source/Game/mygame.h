@@ -60,12 +60,19 @@ namespace game_framework {
 		CGameStateInit(CGame *g);
 		void OnInit();  								// 遊戲的初值及圖形設定
 		void OnBeginState();							// 設定每次重玩所需的變數
+		void OnKeyDown(UINT, UINT, UINT);
 		void OnKeyUp(UINT, UINT, UINT); 				// 處理鍵盤Up的動作
 		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 	protected:
 		void OnShow();									// 顯示這個狀態的遊戲畫面
+		//void show_text();
+		void load_background();
+		void OnMove();
 	private:
-		CMovingBitmap logo;								// csie的logo
+		CMovingBitmap logo, background, clickedPlayButton, title, settingButton, ground;								// csie的logo, 背景
+		
+		//keyboard
+		bool SpaceKey;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -89,6 +96,12 @@ namespace game_framework {
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
+		void show_text();
+		bool playBtnClicked, finishLoaded, helpBtnClicked, onHelp, onAbout, onHowToPlay, onCheatPage; //按鍵
+		//keyboard
+		bool LeftKey, RightKey, UpKey, DownKey, SpaceKey;
+		int cnt_time, shot, max;
+		CMovingBitmap background, clickedPlayButton, title, bird, pipe_down[1000], pipe_top[1000], ground; // 背景
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

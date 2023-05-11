@@ -1003,7 +1003,7 @@ namespace game_framework {
 		pDC->SelectObject(&b1);
 		pDC->Rectangle(progress_x1, progress_y1, progress_x2_end, progress_y2);
 
-		CBrush b2(RGB(255, 255, 255));					// 畫黃色 progrss進度
+		CBrush b2(RGB(0, 0, 0));					// 畫黃色 progrss進度
 		pDC->SelectObject(&b2);
 		pDC->Rectangle(progress_x1, progress_y1, progress_x2, progress_y2);
 
@@ -1011,7 +1011,7 @@ namespace game_framework {
 		pDC->SelectObject(pb);						// 釋放 brush
 
 
-		CTextDraw::ChangeFontLog(pDC, 30, "微軟正黑體", RGB(255, 255, 255));
+		CTextDraw::ChangeFontLog(pDC, 30, "微軟正黑體", RGB(0, 0, 0));
 
 		CTextDraw::Print(pDC, x1, (int)(SIZE_Y * 0.40), message.c_str());
 
