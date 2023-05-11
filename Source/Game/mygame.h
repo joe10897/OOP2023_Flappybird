@@ -101,6 +101,8 @@ namespace game_framework {
 		//keyboard
 		bool LeftKey, RightKey, UpKey, DownKey, SpaceKey;
 		int cnt_time, shot, max;
+		float _imgMaxLandWidth; //ground的平移
+		float _imgStartX; //ground的平移
 		CMovingBitmap background, clickedPlayButton, title, bird, pipe_down[1000], pipe_top[1000], ground; // 背景
 	};
 
