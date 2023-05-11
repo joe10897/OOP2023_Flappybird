@@ -24,6 +24,7 @@ namespace game_framework{
 		
 		// 陸地圖片
 		CMovingBitmap ground;
+		bool IsAnimation;
 
 		// 陸地圖片水平寬度
 		float groundMaxLandWidth;

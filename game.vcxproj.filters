@@ -19,6 +19,9 @@
     <None Include="RES\GAME.RC2">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include=".gitignore" />
+    <None Include=".gitattributes" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Library\audio.cpp">

@@ -233,6 +233,9 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include="README.md" />
     <None Include="RES\GAME.RC2" />
   </ItemGroup>
   <ItemGroup>
