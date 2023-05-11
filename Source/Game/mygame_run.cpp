@@ -7,12 +7,16 @@
 #include "../Library/gamecore.h"
 #include "mygame.h"
 #include "config.h"
+#include "birdobj.h"
 
 #include <time.h>
 #include <stdlib.h>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+
+
+
 using namespace game_framework;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -72,11 +76,12 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	clickedPlayButton.SetTopLeft(420, 280);
 
 	//loading bird
-	bird.LoadBitmapByString({ "Resources/balloon.bmp" }, RGB(0, 0, 0));
+	bird.LoadBitmapByString({ "Resources/flappy1.bmp", "Resources/flappy2.bmp", "Resources/flappy3.bmp" }, RGB(255, 255, 255));
 	bird.SetTopLeft(500, 300);
+	bird.SetAnimation(200, false);
 
 	//loading pipe
-	for (int i = 0; i < 1000; i++) { //Y軸平移
+	for (int i = 0; i < SIZE_Y; i++) { //Y軸平移
 		pipe_top[i].LoadBitmapByString({ "Resources/pipe_top.bmp" }, RGB(255, 255, 255));
 		pipe_down[i].LoadBitmapByString({ "Resources/pipe_down.bmp" }, RGB(255, 255, 255));
 		pipe_top[i].SetTopLeft(900, -150);
@@ -170,7 +175,7 @@ void CGameStateRun::OnShow()
 	bird.ShowBitmap();
 
 	//show pipe_down
-	for (int i = 0; i < 1000; i++) { //Y軸平移
+	for (int i = 0; i < SIZE_Y; i++) { //Y軸平移
 		pipe_down[i].ShowBitmap();
 		pipe_top[i].ShowBitmap();
 		pipe_down[i].SetTopLeft(pipe_down[i].GetLeft() - 20, pipe_down[i].GetTop());
