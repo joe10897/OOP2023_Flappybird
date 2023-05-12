@@ -84,12 +84,11 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	}
 	 //loading ground
 	ground.LoadBitmapByString({ "Resources/ground.bmp" }, RGB(255, 255, 255));
-<<<<<<< Updated upstream
-=======
-	_imgStartX += 1;
-	if (_imgStartX >= 40)
-		_imgStartX = 0.0;
->>>>>>> Stashed changes
+	ground.ShowBitmap();
+	//_imgStartX += 1;
+	//if (_imgStartX >= 40)
+		//_imgStartX = 0.0;
+
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)

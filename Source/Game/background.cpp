@@ -7,3 +7,7 @@ using namespace game_framework;
 BackGround::BackGround() {
 
 }
+
+BackGround::~BackGround() {
+	background.reset();
+}
